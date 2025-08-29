@@ -5,7 +5,6 @@ import com.servicedesk.backend.dtos.MensagemStatusDTO;
 import com.servicedesk.backend.enums.TipoUsuario;
 
 public record CriarUsuarioDTO(
-        @NonNull MensagemStatusDTO mensagemStatus,
         @NonNull Long unidadeId,
         @NonNull String nomeCompleto,
         @NonNull String email,
