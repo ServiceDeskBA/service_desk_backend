@@ -30,9 +30,9 @@ public class TicketEntity {
     private StatusTicket statusTicket;
 
     @Field("numero_chamado")
-    private String numeroChamado;
+    private Long numeroChamado;
 
-    @Field("descricao_problrma")
+    @Field("descricao_problema")
     private String descricaoProblema;
 
     @Field("descricao_solucao")
