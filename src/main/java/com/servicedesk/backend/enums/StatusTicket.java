@@ -6,5 +6,6 @@ public enum StatusTicket {
     ENCERRADO,
     CANCELADO,
     RESOLVIDO,
-    EM_ANDAMENTO
+    EM_ANDAMENTO,
+    NOVO
 }
