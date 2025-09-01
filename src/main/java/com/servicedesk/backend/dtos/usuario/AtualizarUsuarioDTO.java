@@ -4,7 +4,6 @@ import com.servicedesk.backend.dtos.MensagemStatusDTO;
 import com.servicedesk.backend.enums.TipoUsuario;
 
 public record AtualizarUsuarioDTO(
-        MensagemStatusDTO mensagemStatus,
         Long unidadeId,
         String nomeCompleto,
         String email,
@@ -13,7 +12,6 @@ public record AtualizarUsuarioDTO(
 ) {
     public static AtualizarUsuarioDTO from(CriarUsuarioDTO dto){
         return new AtualizarUsuarioDTO(
-            dto.mensagemStatus(),
             dto.unidadeId(),
             dto.nomeCompleto(),
             dto.email(),

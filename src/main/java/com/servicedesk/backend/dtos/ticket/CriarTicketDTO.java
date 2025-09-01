@@ -4,7 +4,6 @@ import com.mongodb.lang.NonNull;
 import com.servicedesk.backend.dtos.MensagemStatusDTO;
 
 public record CriarTicketDTO(
-        @NonNull MensagemStatusDTO mensagemStatus,
         @NonNull Long solicitanteUsuarioId,
         @NonNull Long ticketAbertoUsuarioId,
         @NonNull String descricaoProblema
