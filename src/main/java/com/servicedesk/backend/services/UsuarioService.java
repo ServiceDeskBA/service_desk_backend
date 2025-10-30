@@ -38,7 +38,7 @@ public class UsuarioService implements UsuarioInterface {
     }
 
     @Override
-    public BuscarUsuarioDTO buscarUsuario(Long usuarioId) {
+    public BuscarUsuarioDTO buscarUsuario(String usuarioId) {
         UsuarioEntity buscaUsuario = this.usuarioRepository.findById(usuarioId)
                 .orElseThrow(() -> new NaoEncontradoException("Usuário",'o'));
         return modelMapper.map(buscaUsuario, BuscarUsuarioDTO.class);
@@ -56,8 +56,8 @@ public class UsuarioService implements UsuarioInterface {
     }
 
     @Override
-    public MensagemStatusDTO atualizarUsuario(Long usuarioId, AtualizarUsuarioDTO atualizarUsuarioDados) {
-         if(!this.verificaSeExisteUsuarioPorId(usuarioId)) new NaoEncontradoException("Usuário",'o');
+    public MensagemStatusDTO atualizarUsuario(String usuarioId, AtualizarUsuarioDTO atualizarUsuarioDados) {
+        if(!this.verificaSeExisteUsuarioPorId(usuarioId)) new NaoEncontradoException("Usuário",'o');
 
         this.modelMapper.getConfiguration().setSkipNullEnabled(true);
         UsuarioEntity usuarioEntidade = this.modelMapper.map(atualizarUsuarioDados, UsuarioEntity.class);
@@ -68,7 +68,7 @@ public class UsuarioService implements UsuarioInterface {
     }
 
     @Override
-    public void deletarUsuario(Long usuarioId) {
+    public void deletarUsuario(String usuarioId) {
         this.usuarioRepository.deleteById(usuarioId);
 
         Optional<UsuarioEntity> buscaUsuario = this.usuarioRepository.findById(usuarioId);
@@ -76,7 +76,7 @@ public class UsuarioService implements UsuarioInterface {
     }
 
     @Override
-    public boolean verificaSeExisteUsuarioPorId(Long usuarioId) {
+    public boolean verificaSeExisteUsuarioPorId(String usuarioId) {
         return this.usuarioRepository.existsById(usuarioId);
     }
 }

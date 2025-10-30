@@ -1,15 +1,11 @@
 package com.servicedesk.backend.services;
 
 import com.servicedesk.backend.repository.UsuarioRepository;
-import com.servicedesk.backend.entities.UsuarioEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import javax.swing.plaf.PanelUI;
-
 
 @Service
 public class AutenticacaoService implements UserDetailsService {

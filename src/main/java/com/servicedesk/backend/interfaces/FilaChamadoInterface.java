@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface FilaChamadoInterface {
     FilaChamadoEntity criarFilaChamado(CriarFilaChamadoDTO criarFilaChamadoDados);
-    BuscarFilaChamadoDTO buscarFilaChamado(Long filaChamadoId);
+    BuscarFilaChamadoDTO buscarFilaChamado(String filaChamadoId);
     List<BuscarFilaChamadoDTO> buscarTodasFilaChamado();
-    MensagemStatusDTO atualizarFilaChamado(Long filaChamadoId, AtualizarFilaChamadoDTO atualizarFilaChamadoDados);
-    void deletarFilaChamado(Long filaChamadoId);
-    boolean verificaSeExisteFilaChamadoPorId(Long filaChamadoId);
+    MensagemStatusDTO atualizarFilaChamado(String filaChamadoId, AtualizarFilaChamadoDTO atualizarFilaChamadoDados);
+    void deletarFilaChamado(String filaChamadoId);
+    boolean verificaSeExisteFilaChamadoPorId(String filaChamadoId);
 }

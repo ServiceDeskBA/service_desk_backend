@@ -4,7 +4,7 @@ import com.servicedesk.backend.dtos.MensagemStatusDTO;
 
 public record BuscarUnidadeDTO(
         MensagemStatusDTO mensagemStatus,
-        Long unidadeId,
+        String unidadeId,
         String nomeUnidade
 ) {
 }

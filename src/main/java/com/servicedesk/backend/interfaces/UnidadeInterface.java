@@ -10,9 +10,9 @@ import java.util.List;
 
 public interface UnidadeInterface {
     UnidadeEntity criarUnidade(CriarUnidadeDTO criarUnidadeDados);
-    BuscarUnidadeDTO buscarUnidade(Long unidadeId);
+    BuscarUnidadeDTO buscarUnidade(String unidadeId);
     List<BuscarUnidadeDTO> buscarTodasUnidades();
-    MensagemStatusDTO atualizarUnidade(Long unidadeId, AtualizarUnidadeDTO atualizarUnidadeDados);
-    void deletarUnidade(Long unidadeId);
-    boolean verificaSeExisteUnidadePorId(Long unidadeId);
+    MensagemStatusDTO atualizarUnidade(String unidadeId, AtualizarUnidadeDTO atualizarUnidadeDados);
+    void deletarUnidade(String unidadeId);
+    boolean verificaSeExisteUnidadePorId(String unidadeId);
 }
