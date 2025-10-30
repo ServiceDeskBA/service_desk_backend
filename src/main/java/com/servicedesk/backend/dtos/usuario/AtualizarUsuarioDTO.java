@@ -1,10 +1,9 @@
 package com.servicedesk.backend.dtos.usuario;
 
-import com.servicedesk.backend.dtos.MensagemStatusDTO;
 import com.servicedesk.backend.enums.TipoUsuario;
 
 public record AtualizarUsuarioDTO(
-        Long unidadeId,
+        String unidadeId,
         String nomeCompleto,
         String email,
         String senha,

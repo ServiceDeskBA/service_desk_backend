@@ -6,8 +6,8 @@ import java.time.LocalDateTime;
 
 public record BuscarUsuarioDTO(
         MensagemStatusDTO mensagemStatus,
-        Long usuarioId,
-        Long unidadeId,
+        String usuarioId,
+        String unidadeId,
         String nomeCompleto,
         String email,
         TipoUsuario tipoUsuario,

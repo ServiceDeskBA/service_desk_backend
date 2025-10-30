@@ -30,7 +30,7 @@ public class FilaChamadoService implements FilaChamadoInterface {
     }
 
     @Override
-    public BuscarFilaChamadoDTO buscarFilaChamado(Long filaChamadoId) {
+    public BuscarFilaChamadoDTO buscarFilaChamado(String filaChamadoId) {
         FilaChamadoEntity filaChamadoEntidade = this.filaChamadoRepository.findById(filaChamadoId)
                 .orElseThrow(() -> new NaoEncontradoException("Fila de Chamado",'a'));
 
@@ -49,7 +49,7 @@ public class FilaChamadoService implements FilaChamadoInterface {
     }
 
     @Override
-    public MensagemStatusDTO atualizarFilaChamado(Long filaChamadoId, AtualizarFilaChamadoDTO atualizarFilaChamadoDados) {
+    public MensagemStatusDTO atualizarFilaChamado(String filaChamadoId, AtualizarFilaChamadoDTO atualizarFilaChamadoDados) {
         if(!this.verificaSeExisteFilaChamadoPorId(filaChamadoId)) throw new NaoEncontradoException("Fila de Chamado",'a');
 
         this.modelMapper.getConfiguration().setSkipNullEnabled(true);
@@ -61,14 +61,14 @@ public class FilaChamadoService implements FilaChamadoInterface {
     }
 
     @Override
-    public void deletarFilaChamado(Long filaChamadoId) {
+    public void deletarFilaChamado(String filaChamadoId) {
         this.filaChamadoRepository.deleteById(filaChamadoId);
 
         if(this.filaChamadoRepository.existsById(filaChamadoId)) throw new RuntimeException("Erro ao deletar Fila de Chamado");
     }
 
     @Override
-    public boolean verificaSeExisteFilaChamadoPorId(Long filaChamadoId) {
+    public boolean verificaSeExisteFilaChamadoPorId(String filaChamadoId) {
         return this.filaChamadoRepository.existsById(filaChamadoId);
     }
 }

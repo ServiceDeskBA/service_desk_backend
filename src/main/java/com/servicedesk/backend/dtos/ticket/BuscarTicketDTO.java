@@ -7,10 +7,10 @@ import java.time.LocalDateTime;
 
 public record BuscarTicketDTO(
         MensagemStatusDTO mensagemStatusDTO,
-        Long ticketId,
-        Long solicitanteUsuarioId,
-        Long ticketAbertoUsuarioId,
-        Long atribuicaoUsuarioId, // escolher aleatorio com base da unidade
+        String ticketId,
+        String solicitanteUsuarioId,
+        String ticketAbertoUsuarioId,
+        String atribuicaoUsuarioId, // escolher aleatorio com base da unidade
         StatusTicket statusTicket,
         String numeroChamado,
         String descricaoProblema,

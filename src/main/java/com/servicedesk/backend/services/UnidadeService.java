@@ -31,7 +31,7 @@ public class UnidadeService implements UnidadeInterface {
     }
 
     @Override
-    public BuscarUnidadeDTO buscarUnidade(Long unidadeId) {
+    public BuscarUnidadeDTO buscarUnidade(String unidadeId) {
         UnidadeEntity unidadeEntidade = this.unidadeRepository.findById(unidadeId)
                 .orElseThrow(() -> new NaoEncontradoException("Unidade",'a'));
 
@@ -50,7 +50,7 @@ public class UnidadeService implements UnidadeInterface {
     }
 
     @Override
-    public MensagemStatusDTO atualizarUnidade(Long unidadeId, AtualizarUnidadeDTO atualizarUnidadeDados) {
+    public MensagemStatusDTO atualizarUnidade(String unidadeId, AtualizarUnidadeDTO atualizarUnidadeDados) {
         if(!this.verificaSeExisteUnidadePorId(unidadeId)) throw new NaoEncontradoException("Unidade",'a');
 
         this.modelMapper.getConfiguration().setSkipNullEnabled(true);
@@ -61,14 +61,14 @@ public class UnidadeService implements UnidadeInterface {
     }
 
     @Override
-    public void deletarUnidade(Long unidadeId) {
+    public void deletarUnidade(String unidadeId) {
         this.unidadeRepository.deleteById(unidadeId);
 
         if(this.verificaSeExisteUnidadePorId(unidadeId)) throw new RuntimeException("Erro ao deletar unidade");
     }
 
     @Override
-    public boolean verificaSeExisteUnidadePorId(Long unidadeId) {
+    public boolean verificaSeExisteUnidadePorId(String unidadeId) {
         return this.unidadeRepository.existsById(unidadeId);
     }
 }

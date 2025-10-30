@@ -1,10 +1,8 @@
 package com.servicedesk.backend.dtos.ticket;
 
-import com.servicedesk.backend.dtos.MensagemStatusDTO;
-
 public record AtualizarTicketDTO(
-        Long solicitanteUsuarioId,
-        Long ticketAbertoUsuarioId,
+        String solicitanteUsuarioId,
+        String ticketAbertoUsuarioId,
         String descricaoProblema
 ) {
     public static AtualizarTicketDTO from(AtualizarTicketDTO dto){

@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 public record BuscarFilaChamadoDTO(
         MensagemStatusDTO mensagemStatus,
-        Long filaChamadoId,
+        String filaChamadoId,
         String nomeFilaChamado,
         LocalDateTime criadoEm,
         LocalDateTime atualizadoEm

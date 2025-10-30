@@ -43,7 +43,7 @@ public class TicketService implements TicketInterface {
     }
 
     @Override
-    public BuscarTicketDTO buscarTicket(Long ticketId) {
+    public BuscarTicketDTO buscarTicket(String ticketId) {
         Optional<TicketEntity> ticket = this.ticketRepository.findById(ticketId);
         if(ticket.isEmpty()) throw new NaoEncontradoException("Ticket",'o');
 
@@ -62,7 +62,7 @@ public class TicketService implements TicketInterface {
     }
 
     @Override
-    public MensagemStatusDTO atualizarTicket(Long ticketId, AtualizarTicketDTO atualizarTicketDados) {
+    public MensagemStatusDTO atualizarTicket(String ticketId, AtualizarTicketDTO atualizarTicketDados) {
         if(!this.verificaSeExisteTicketPorId(ticketId)) new NaoEncontradoException("Ticket",'o');
 
         this.modelMapper.getConfiguration().setSkipNullEnabled(true);
@@ -74,7 +74,7 @@ public class TicketService implements TicketInterface {
     }
 
     @Override
-    public void deletarTicket(Long ticketId) {
+    public void deletarTicket(String ticketId) {
         this.ticketRepository.deleteById(ticketId);
 
         Optional<TicketEntity> verificaSeDeletouTicket = this.ticketRepository.findById(ticketId);
@@ -82,7 +82,7 @@ public class TicketService implements TicketInterface {
     }
 
     @Override
-    public boolean verificaSeExisteTicketPorId(Long ticketId) {
+    public boolean verificaSeExisteTicketPorId(String ticketId) {
         return this.ticketRepository.existsById(ticketId);
     }
 }

@@ -4,24 +4,17 @@ import org.springframework.data.annotation.*;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.mongodb.core.mapping.Field;
-
-import java.time.LocalDateTime;
+import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.Date;
 
 @Data
+@Document(collation = "tb_fila_chamado")
 public class FilaChamadoEntity {
-    @Field("_fila_chamado_id")
     @Id
-    private Long filaChamadoId;
-
-    @Field("nome_fila")
+    private String filaChamadoId;
     private String nomeFila;
-
-    @Field("criado_em")
     @CreatedDate
-    private LocalDateTime criadoEm;
-
-    @Field("atualizado_em")
+    private Date criadoEm;
     @LastModifiedDate
-    private LocalDateTime atualizadoEm;
+    private Date atualizadoEm;
 }
