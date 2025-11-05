@@ -5,6 +5,7 @@ import com.servicedesk.backend.dtos.ticket.AtualizarTicketDTO;
 import com.servicedesk.backend.dtos.ticket.BuscarTicketDTO;
 import com.servicedesk.backend.dtos.ticket.CriarTicketDTO;
 import com.servicedesk.backend.entities.TicketEntity;
+import com.servicedesk.backend.enums.PrioridadeTicket;
 import com.servicedesk.backend.enums.StatusTicket;
 import com.servicedesk.backend.exceptions.NaoEncontradoException;
 import com.servicedesk.backend.helpers.GerarCodigoHelper;
@@ -13,6 +14,7 @@ import com.servicedesk.backend.repository.TicketRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -84,5 +86,31 @@ public class TicketService implements TicketInterface {
     @Override
     public boolean verificaSeExisteTicketPorId(String ticketId) {
         return this.ticketRepository.existsById(ticketId);
+    }
+
+    public List<BuscarTicketDTO> filtrarChamados(StatusTicket status, PrioridadeTicket prioridade, Date dataInicio, Date dataFim) {
+        List<TicketEntity> tickets;
+
+        if (status != null && prioridade != null && dataInicio != null && dataFim != null) {
+            tickets = this.ticketRepository.findByStatusTicketAndPrioridadeAndCriadoEmBetween(status, prioridade, dataInicio, dataFim);
+        } else if (status != null && prioridade != null) {
+            tickets = this.ticketRepository.findByStatusTicketAndPrioridade(status, prioridade);
+        } else if (status != null && dataInicio != null && dataFim != null) {
+            tickets = this.ticketRepository.findByStatusTicketAndCriadoEmBetween(status, dataInicio, dataFim);
+        } else if (prioridade != null && dataInicio != null && dataFim != null) {
+            tickets = this.ticketRepository.findByPrioridadeAndCriadoEmBetween(prioridade, dataInicio, dataFim);
+        } else if (status != null) {
+            tickets = this.ticketRepository.findByStatusTicket(status);
+        } else if (prioridade != null) {
+            tickets = this.ticketRepository.findByPrioridade(prioridade);
+        } else if (dataInicio != null && dataFim != null) {
+            tickets = this.ticketRepository.findByCriadoEmBetween(dataInicio, dataFim);
+        } else {
+            tickets = this.ticketRepository.findAll();
+        }
+
+        return tickets.stream()
+                .map(ticket -> modelMapper.map(ticket, BuscarTicketDTO.class))
+                .toList();
     }
 }

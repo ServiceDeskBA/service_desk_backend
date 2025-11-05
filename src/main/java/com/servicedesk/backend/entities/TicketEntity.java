@@ -1,5 +1,6 @@
 package com.servicedesk.backend.entities;
 
+import com.servicedesk.backend.enums.PrioridadeTicket;
 import com.servicedesk.backend.enums.StatusTicket;
 import org.springframework.data.annotation.*;
 import lombok.Data;
@@ -17,7 +18,9 @@ public class TicketEntity {
     private String ticketAbertoUsuarioId;
     private String atribuicaoUsuarioId;
     private StatusTicket statusTicket;
+    private PrioridadeTicket prioridade;
     private Long numeroChamado;
+    private String titulo;
     private String descricaoProblema;
     private String descricaoSolucao;
     @CreatedDate
